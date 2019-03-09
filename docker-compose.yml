@@ -9,4 +9,4 @@ services:
     volumes:
       - ./effective_manager:/effective_manager
     command: >
-      sh -c "python manage.py runserver 0.0.0.0:8000"
+      sh -c "python effective_manager/manage.py runserver 0.0.0.0:8000"
