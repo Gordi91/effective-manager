@@ -2,4 +2,7 @@
 exclude =
   migrations,
   __pycache__,
+  manage.py,
   settings.py
+
+  effective_manager
