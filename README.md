@@ -1,0 +1,1 @@
+# effective-manager
