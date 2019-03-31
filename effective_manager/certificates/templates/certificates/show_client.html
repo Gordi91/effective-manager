@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+      <div class="jumbotron">
+          <div class="row">
+            <div class="col-12">
+                <h3>{{ client }}</h3>
+                {% if request.user.is_superuser %}
+                   <button type="button" class="btn btn-danger" onclick="location.href='{% url 'delete_client' client.id %}'">
+                        Delete
+                  </button>
+                    <button type="button" class="btn btn-info" onclick="location.href='{% url 'modify_client' client.id %}'">
+                        Modify
+                    </button><br><br>
+                {% endif %}
+                <b>Address:</b> <br>
+                {{ client.town }}, {{ client.street }}, {{ client.house_number }}/{{ client.apartment_number }}<br><br>
+                <b>Description:</b> <br>
+                {{ client.description }}
+            </div>
+           </div>
+      </div>
+    </div>
+
+
+{% endblock content %}

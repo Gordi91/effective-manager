@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+      <div class="jumbotron">
+          <div class="row">
+            <div class="col-12">
+                <h3>{{ certificate }}</h3>
+                <h4>Status: {{ certificate.get_status_display }}</h4>
+                {% if request.user.is_superuser %}
+                   <button type="button" class="btn btn-danger" onclick="location.href='{% url 'delete_certificate' certificate.id %}'">
+                        Delete
+                    </button>
+                    <button type="button" class="btn btn-info" onclick="location.href='{% url 'modify_certificate' certificate.id %}'">
+                        Modify
+                    </button><br><br>
+                {% endif %}
+                <p>Added on: {{ certificate.added_to_database|date:"d F Y" }}</p>
+                <p>Poller: {{ certificate.poller }}</p>
+                <p>Assigned to poller on: {{ certificate.assigned_to_poller_date|date:"d F Y" }}</p>
+                <p>Certificator: {{ certificate.certificator }}</p>
+                <p>Assigned to certificator on: {{ certificate.assigned_to_certificator_date|date:"d F Y" }}</p>
+                {% if is_poller %}
+                    <button type="button" class="btn btn-success" onclick="location.href='{% url 'poll_done' certificate.id %}'">
+                        Mark poll as done
+                    </button>
+                {% endif %}
+                {% if is_certificator %}
+                    <button type="button" class="btn btn-success" onclick="location.href='{% url 'certificate_done' certificate.id %}'">
+                        Mark certificate as done
+                    </button>
+                {% endif %}
+            </div>
+           </div>
+      </div>
+    </div>
+
+
+{% endblock content %}

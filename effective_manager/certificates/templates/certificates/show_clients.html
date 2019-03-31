@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    {% load static %}
+
+                <h3>Clients</h3>
+                <ol class="list-group">
+                    {% for client in clients %}
+                        <li class="list-group-item">
+                          <a href="{% url 'show_client' client.id %}" class="list-group-item">{{ client }}</a>
+                            {% if request.user.is_superuser %}
+                              <button type="button" class="btn btn-danger" onclick="location.href='{% url 'delete_client' client.id %}'">
+                                Delete
+                              </button>
+                              <button type="button" class="btn btn-info" onclick="location.href='{% url 'modify_client' client.id %}'">
+                                Modify
+                              </button>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ol>
+                {% if request.user.is_superuser %}
+                    <button type="button" class="btn btn-info" onclick="location.href='{% url 'new_client' %}'">
+                        Add new client
+                    </button>
+                {% endif %}
+
+{% endblock content %}

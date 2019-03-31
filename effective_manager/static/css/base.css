@@ -1,0 +1,9 @@
+.techfont{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.asteriskField {
+    display: none;
+}

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+from . import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -38,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'crispy_forms',
+    'blog',
+    'certificates',
 ]
 
 MIDDLEWARE = [
@@ -122,3 +126,28 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = "/vol/web/media"
+STATIC_ROOT = "/vol/web/static"
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    '/var/web/static/',
+]
+
+MEDIAFILES_DIRS = [
+    os.path.join(BASE_DIR, "media"),
+    '/var/web/media/',
+]
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+EMAIL_USE_TLS = config.EMAIL_USE_TLS
+EMAIL_HOST = config.EMAIL_HOST
+EMAIL_HOST_USER = config.EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = config.EMAIL_HOST_PASSWORD
+EMAIL_PORT = config.EMAIL_PORT
+
+APPEND_SLASH = True

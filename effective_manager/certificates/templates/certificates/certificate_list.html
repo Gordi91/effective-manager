@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+        {% for certificate in certificate_list %}
+            <li class="list-group-item">
+              <a href="{% url 'show_certificate' certificate.id %}" class="list-group-item">{{ certificate }}</a>
+                <div class="date">
+                    <p>Added on: {{ certificate.added_to_database|date:"d F Y" }}</p>
+                </div>
+                {% if request.user.is_superuser %}
+                  <button type="button" class="btn btn-danger" onclick="location.href='{% url 'delete_certificate' certificate.id %}'">
+                    Delete
+                  </button>
+                  <button type="button" class="btn btn-info" onclick="location.href='{% url 'modify_certificate' certificate.id %}'">
+                    Modify
+                  </button>
+                {% endif %}
+            </li>
+        {% endfor %}
+        {% if request.user.is_superuser %}
+            <button type="button" class="btn btn-info" onclick="location.href='{% url 'new_certificate' %}'">
+                Add new certificate
+            </button>
+        {% endif %}
+
+{% endblock %}
