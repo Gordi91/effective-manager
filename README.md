@@ -1,3 +1,12 @@
 Effective Manager
 ==========================
-![image](https://travis-ci.org/Gordi91/effective-manager.png)
+Work in progress
+Campany blog and specific project managment
+
+
+Technology stack
+python
+Django
+PostgreSQL
+Docker
+TravisIO
